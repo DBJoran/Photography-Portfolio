@@ -21,7 +21,12 @@ export default {
     // While it is NOT a phone or a tablet, it should be treated as one
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
     var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-    if (width == 1280 && height == 720){
+    if (width == 1280 && height == 720 && isMobile().phone == true){
+      this.$store.commit('setIsMobile', true)
+    }
+    
+    // If the browser window has a width of less then 1440 px let him use the mobile version of the site
+    if (width < 1440){
       this.$store.commit('setIsMobile', true)
     }
 
